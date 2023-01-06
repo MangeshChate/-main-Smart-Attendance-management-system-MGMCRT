@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../css/main.css"> -->
+    <link rel="stylesheet" href="../css/main2.css">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+    #section {
+        background-color:   #5050e0;
+    }
+
+   
+    h3{
+        font-size: 3rem;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: bolder;
+    }
+    h2 {
+        font-size: 5rem;
+        color:white;
+        /* font-style: italic; */
+        
+    }
+
+    p {
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    img {
+        border-radius: 100vh;
+
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    #section {
+        height: auto;
+    }
+
+    .photo {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .photo img {
+        width: 22rem;
+    }
+
+    #section2 {
+        background-color: white;
+    }
+
+    #section3 {
+        background-color: #ff4c68;
+    }
+    #nav-brand{
+        font-size: 4rem;
+    }
+   .container1{
+       background-color: #ff4c68;
+       padding: 2rem;
+       
+    }
+   
+    .card-body , .card{
+        background-color: #fdfdffd7;
+        
+    }
+
+
+/* ============================ */
+
+label.filebutton {
+   /* padding: 1rem; */
+    overflow:hidden;
+    position:relative;
+
+}
+
+label span input {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding:0;
+}
+   
+</style>
+
+<body>
+    <section id="section">
+        <div class="container">
+            <nav class="navbar navbar-expand-md  " id="navbar">
+                <a href="#" class="navbar-brand" id="nav-brand">
+                    <h3>Mgmcrp</h3>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" id="item1">
+                            <a href="#contact-scroll" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item" id="item2">
+                            <a href="/student_login" class="nav-link">Home</a>
+                        </li>
+                       
+                    </ul>
+
+                </div>
+
+
+            </nav>
+
+
+        </div>
+        <div class="container" >
+            <h2>
+                Student profile
+            </h2>
+            </nav>
+            <div class="row">
+               
+            </div>
+
+        </div>
+
+    </section>
+    <svg class="svg" style="position:absolute" xmlns="http://www.w3.org/2000/svg" id="svg" viewBox="0 0 1439 315">
+        <path fill="#5050e0" fill-opacity="1"
+            d="M0,64L26.7,85.3C53.3,107,107,149,160,186.7C213.3,224,267,256,320,261.3C373.3,267,427,245,480,202.7C533.3,160,587,96,640,106.7C693.3,117,747,203,800,229.3C853.3,256,907,224,960,197.3C1013.3,171,1067,149,1120,160C1173.3,171,1227,213,1280,208C1333.3,203,1387,149,1413,122.7L1440,96L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z">
+        </path>
+    </svg>
+    <!-- ==============================mid================================== -->
+    <section id="profile">
+        <div class="container py-5">
+       
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
+                <div class="card-body text-center">
+                  <img src="<%=profile.simg %>" style="width: 300rem;"id="pimg" 
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                  <h3 class="my-3"><%=profile.sname %></h3>
+                  <h6 class="text-muted mb-1">Mgm's College of Engineering Nanded</h6>
+                  <br>
+                  
+                  <div class="d-flex justify-content-center mb-2">
+                    <form action="/upload" method="post" >
+
+                    <input type="hidden" name="emo"value="<%= profile._id %>">
+                    <input type="hidden" name="semail"value="<%= profile.semail %>">
+                    <input type="hidden" name="sid"value="<%= profile.sid %>">
+
+                    <input type="text"  name="simg" placeholder="paste img URL here"/>
+                    <button type="submit" class="filebutton btn btn-outline-success ms-1">Upload</button>
+                    </form>
+
+                  
+                    
+                  </label>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="card mb-4 mb-lg-0">
+                <div class="card-body p-0">
+                 
+                </div>
+              </div> -->
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Full Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0"><%=profile.sname %></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0"><%=profile.semail %></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Roll No.</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0"><%=profile.sroll %></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Branch</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0"><%=profile.sbranch %></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">year</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0"><%=profile.syear %></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">id</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0"><%=profile.sid %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+                <div class="">
+                  <div class="card  ">
+                    <div class="card-body">
+                      <p class=""><span class="text-primary font-italic me-1">Attendance</span> Status
+                      </p>
+                     
+
+                            
+                      
+                        <div class="row py-2">
+                            <div class="py-1">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="present" display="none"><%= profile.spresent%></div>
+                                        <canvas id="chDonut1"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                      
+
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <!-- =====================</second mid>============================ -->
+    
+
+    
+    <!-- ============================      footer      ========================================================= -->
+    
+    <br>
+    <br><br><br>
+    
+    
+    
+    
+    
+    
+    
+    
+   
+        <div class="contact_form"id="contact-scroll">
+            <div class="container1">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="contact_form_container">
+                            <div class="contact_form_title">Get in Touch</div>
+    
+                            <form  action="/oo" method="post" id="contact_form">
+                                <div
+                                    class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
+                                    <input type="text" value ="<%= profile.sname %>"id="name" class="contact_form_name input_field"
+                                        placeholder="Your name" required="required" data-error="Name is required." name="rname">
+                                        <input type="hidden" value="<%=profile.sid%>" name="rid">
+                                    <input type="text" id="email" class="contact_form_email input_field"
+                                        placeholder="Your email" value="<%=profile.semail %>"required="required" name="remail" data-error="Email is required.">
+                                    
+                                </div>
+                                <div class="contact_form_text">
+                                    <textarea id="message" class="text_field contact_form_message" name="rtext" rows="4"
+                                        placeholder="Message" required="required"
+                                        data-error="Please, write us a message."></textarea>
+                                </div>
+                                <div class="contact_form_button">
+                                    <button type="submit" class="button btn contact_submit_button">Send Message</button>
+                                </div>
+                            </form>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel"></div>
+        </div>
+
+
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/08b1e9fa97.js" crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+
+
+
+<script src="../js/student_login.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+<script>
+    var colors = ['#007bff','#28a745'];
+
+/* 3 donut charts */
+var donutOptions = {
+  cutoutPercentage: 85, 
+  legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}}
+};
+
+// donut 1
+let present = document.getElementById('present').innerHTML;
+var chDonutData1 = {
+    labels: ['Present', 'Total Days'],
+    datasets: [
+      {
+        backgroundColor: colors.slice(0,3),
+        borderWidth: 0,
+        data: [present, 50]
+      }
+    ]
+};
+
+var chDonut1 = document.getElementById("chDonut1");
+if (chDonut1) {
+  new Chart(chDonut1, {
+      type: 'pie',
+      data: chDonutData1,
+      options: donutOptions
+  });
+}
+
+
+
+const pimg= document.querySelector("#pimg")
+if(pimg.getAttribute("src")=={}){
+  // pimg.removeAttribute("src");
+  console.log("hello")
+  
+}
+     
+</script>
+
+</html>
+ 
+    

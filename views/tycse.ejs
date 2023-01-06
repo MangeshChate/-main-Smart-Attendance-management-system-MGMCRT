@@ -1,0 +1,282 @@
+<%- include('aftertake') -%>
+
+
+  <style>
+    .checkbox {
+      height: 2rem;
+      width: 3rem;
+    }
+    Body{
+    Background: Rgb(200, 220, 224);
+}
+  
+.form {
+  font-family: Helvetica, sans-serif;
+  
+
+  text-align: center;
+ width: 100px;
+ padding: 1rem;
+ margin: 1rem;
+ 
+}
+
+.form input[type="text"],
+.form input[type="url"] {
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 4%;
+  font-size: 17px;
+  color: rgb(9, 61, 125);
+}
+.form input[type="text"]:focus,
+.form input[type="url"]:focus {
+  box-shadow: 0 0 5px #5868bf;
+  padding: 4%;
+  border: 1px solid #5868bf;
+}
+
+.form button {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 180px;
+  margin: 0 auto;
+  padding: 3%;
+  background: #0853b6;
+  border: none;  
+  border-radius: 3px;
+  font-size: 17px;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  color: #fff;
+  cursor: pointer;
+}
+.form button:hover {
+  background: rgba(88,104,191, 0.5);
+}
+#qrcode-container{
+    display:none;
+}
+
+.qrcode{
+  padding: 25px;
+  margin-bottom: 30px;
+}
+.qrcode img{
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(67, 67, 68, 0.25);
+  padding: 14px;
+  width: 25rem;
+}
+
+
+  </style>
+ 
+  
+
+  <div class="buttons " style="display: flex; ">
+    <button class="btn btn-lg bg-primary" onclick='startlist()' style="margin-right: 2rem;">Start
+      Attendance</button>
+
+    <div onclick="alert('submitted to database !')">
+      
+      <form action="/submitArray" method="post" style="display: flex;">
+        <input type="hidden" display="none"  id="arraySubmit" name="arraySubmit"/>
+        <button class="btn btn-lg bg-warning"  type="submit">Submit</button>
+
+      </form>
+      
+    </div>
+  
+ <!-- ==================================QR CODE ===================================== -->
+ 
+
+ 
+
+    <form action="/today" method="post" class="la">
+      <input type="hidden" display="none" id="arraySubmit" name="arraySubmit" />
+      <button class="btn btn-lg bg-danger"  type="submit">Submit Attendance</button>
+    </form>
+  </div>
+
+<hr>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+  <div class="form">
+
+   
+    <form>
+      <input type="hidden" id="website" name="website" value="https://google.com" required />
+  
+      <div id="qrcode-container">
+          <div id="qrcode" class="qrcode"></div>
+      </div>
+  
+      <button type="button" class="btn btn-lg " onclick="generateQRCode()" style="padding: 1rem;">Generate QR Code</button>
+      
+  </form>
+  
+  
+  
+    <script type="text/javascript">
+      function generateQRCode() {
+        let website = document.getElementById("website").value;
+        if (website) {
+          let qrcodeContainer = document.getElementById("qrcode");
+          qrcodeContainer.innerHTML = "";
+          new QRCode(qrcodeContainer, website);
+   
+          document.getElementById("qrcode-container").style.display = "block";
+        } else {
+          alert("Please enter a valid URL");
+        }
+      }
+    </script>
+  </div>
+  <hr>
+  <div class="container-fluid" style="display:flex">
+    <section>
+      
+      <div>
+      <h1 style="margin: 2rem;">Attendance Sheet</h1>
+
+        <div class="card-body">
+          <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12">
+                  <div class="card shadow-2-strong" style="background-color: #f5f7fa">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-borderless mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col">Name</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">ID</th>
+                              <th scope="col">RollNo.</th>
+                              <th scope="col">Year</th>
+                              <th scope="col">Branch</th>
+
+                              <th scope="col">Presenty</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <% newStudent.forEach(function(student){ %>
+
+                              <tr>
+                                <td>
+                                  <%=student.sname %>
+                                </td>
+                                <td>
+                                  <%=student.semail %>
+                                </td>
+                                <td>
+                                  <%=student.sid %>
+                                </td>
+                                <td>
+                                  <%=student.sroll %>
+                                </td>
+                                <td>
+                                  <%=student.syear %>
+                                </td>
+                                <td>
+                                  <%=student.sbranch %>
+                                </td>
+
+                                <td>
+                                  <input type="checkbox" value="<%= student._id%>" name="scheck" class="checkbox "
+                                    id="check" />
+                                </td>
+                              </tr>
+
+                              <% }); %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </section>
+    <section >
+      <div>
+        <h3 style="margin: 3rem; color: #252525;">Absent Student List</h3>
+        <div class="card-body">
+          
+          <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12">
+                  <div class="card shadow-2-strong" style="background-color: #f5f7fa">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-borderless mb-0">
+                          <thead>
+                            <tr>
+                              <th scope="col">Name</th>
+  
+                              <th scope="col">RollNo.</th>
+  
+                            </tr>
+                          </thead>
+  
+                          <tbody>
+                            <% absentStudent.forEach(function(student){ %>
+  
+                              <tr>
+                                <td>
+                                  <%=student.sroll %>
+                                </td>
+                                <td>
+                                  <%=student.sname %>
+                                </td>
+  
+                              </tr>
+  
+                              <% }); %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    </section>
+    
+  </div>
+
+
+  <Script Src="Https://Cdn.Rawgit.Com/Davidshimjs/Qrcodejs/Gh-Pages/Qrcode.Min.Js">
+
+
+  </Script>
+   <script type="text/javascript">
+    function generateQRCode() {
+      let website = document.getElementById("website").value;
+      if (website) {
+        let qrcodeContainer = document.getElementById("qrcode");
+        qrcodeContainer.innerHTML = "";
+        new QRCode(qrcodeContainer, website);
+ 
+        document.getElementById("qrcode-container").style.display = "block";
+      } else {
+        alert("Please enter a valid URL");
+      }
+    }
+  </script>
+  <script src="../js/checklist.js"></script>

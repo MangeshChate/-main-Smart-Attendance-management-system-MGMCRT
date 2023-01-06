@@ -1,0 +1,85 @@
+    <%- include('main_header') -%>
+    <style>
+        .home{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.home .content{
+    text-align: center;
+}
+
+.home .content h3{
+    text-align: center;
+    font-size: 75px;
+    color:#333;
+}
+
+.home .content span{
+    font-size: 70px;
+    text-align: center;
+    color:var(--pink);
+
+    line-height: 1.5;
+}
+
+
+.submit{
+    font-size: 2rem;
+
+}
+        .home{
+            /* background-color:white; */
+            /* https://media.tenor.com/9vRAkntogEMAAAAd/background.gif */
+           
+            background-image: url("../images/SMBH_Infinite_Loop-rev.gif");
+            width: 139%;
+            background-repeat: no-repeat;
+            background-size:fit;
+            background-position: center;
+            /* background-blend:darken; */
+            
+        }
+        a{
+            text-decoration: none;
+            
+        }
+        h1{
+            font-size: 4rem;
+        }
+        h1,h3,img{
+            color: aliceblue;
+            text-shadow: 1rem 1rem 1rem  #252525 ;
+           
+        }
+        .submit{
+            box-shadow: 1rem 1rem 1rem #252525;
+            font-weight: bold;
+            border-radius: 5rem;
+        }
+    </style>
+
+        <section class="home" id="home">
+            <a name="home"></a>
+
+            <div class="container">
+                <img src="../images/mgm.png" alt="MGM Logo" width="200vh">
+                <br>
+                <br>
+                <h1>Welcome</h1>
+                <h3>MGM's College of Engineering </h3>
+                <p></p>
+                <a href="/aftertake">
+                <button  class="submit btn btn-lg bg-warning">Take Attendance</button>
+                </a>
+            </div>
+            
+        </section>
+
+  

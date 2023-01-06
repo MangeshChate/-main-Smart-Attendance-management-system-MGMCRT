@@ -1,0 +1,136 @@
+
+    <%- include('main_header') -%>
+ 
+    <style>
+         .home{
+            
+            /* width: 139%; */
+            background-color: #2525;
+            background-repeat: no-repeat;
+            background-size:cover;
+            display: flex;
+            height: 150rem;
+          
+            flex-direction: column;
+          
+        }
+        a{
+            text-decoration: none;
+            
+        }
+  section {
+    
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    align-items: center;
+    /* background-color: */
+  }
+  main{
+    width: 1500rem;
+  }
+  .show{
+    background-color: #2525;
+  }
+  .row{
+    height: 8rem;
+  }
+  .con{
+    display: flex;
+    align-items: center;
+    
+  }
+  .gettime{
+    margin-left: 13rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: bold;
+  }
+  .la{
+    margin-left: 64rem;
+    border-radius: 6rem;
+  }
+  table{
+    overflow: scroll;
+  }
+    </style>
+    
+    <main class="home">
+        <br><br><br><br>
+       
+        <div class="container-fluid px-4 ">
+            <div class="con">
+                <div class="q">
+            <h1 class="mt-4">Take Attendance</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Have a Good Day !</li>
+            </ol>
+            </div>
+            <div class="gettim">
+                <h3 class="gettime"></h3>
+            </div>
+
+
+            </div>
+            
+            <div class="row">
+                <div class="col-xl-4 col-md-7">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">TY-CSE-1</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="/tycse">Take attendance</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+                <div class="col-xl-4 col-md-7">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">TY-CSE-2</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="/tycse2">Take attendance</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-7">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">SY-CSE-1</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="/sycse">Take attendance</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-7">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">SY-CSE-2</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="/sycse2">Take attendance</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        
+        
+        
+    
+   
+            
+ 
+    
+    
+    <script>
+    document.querySelector('.gettime').innerHTML = new Date().toLocaleDateString();    
+    </script>
+    
+  
+    
+      
+     
+ 

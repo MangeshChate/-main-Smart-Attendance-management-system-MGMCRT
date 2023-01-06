@@ -1,0 +1,49 @@
+<%- include('main_header') -%>
+<style>
+    .feed{
+        text-decoration: solid;
+        font-size: 3rem;
+        
+    }
+   .card{
+    background-color: #2525;
+   }
+</style>
+<section>
+<div class="showNotice" style="padding: 10rem">
+    <h1 class="feed">Complains ! </h1>
+    <br><br>
+    <div class="row">
+        <% newReport.forEach((report)=>{ %>
+            <div class="col-sm-6 ">
+                <div class="card" style="width: 33rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= report.name %>
+                        </h5>
+                        <a class="card-text">
+                            <%= report.email %>
+                        </a>
+                        <p>
+                            <%= report.message%>
+                        </p>
+                        <form action="/feed" method="post">
+                            <input type="hidden" value="<%=report._id%>" name="idname" />
+                            <button type="button" onclick="this.form.submit()"
+                                class="btn btn-sm">
+                                <span class="btn btn-lg material-symbols-outlined"
+                                    style="background-color: orange">
+                                    backspace
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <% }) %>
+            
+    </div>
+</div>
+</div>
+</section>

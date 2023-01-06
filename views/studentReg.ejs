@@ -1,0 +1,211 @@
+<%- include('main_header') -%>
+<style>
+  .home{
+            
+            /* width: 139%; */
+            background-color: #2525;
+            background-repeat: no-repeat;
+            background-size:cover;
+            display: flex;
+            height: 61rem;
+          
+           justify-content:space-evenly;
+        }
+        a{
+            text-decoration: none;
+            
+        }
+  section {
+    
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    align-items: center;
+    /* background-color: */
+  }
+  main{
+    width: 200rem;
+  }
+  .show{
+    background-color: #2525;
+  }
+  table{
+    overflow: scroll;
+  }
+</style>
+
+
+
+
+  <main>
+    
+      
+          <div class="container-fluid home">
+            
+            <section style="width: 30rem">
+              
+                
+              <div class="container">
+                <div class="px-4" style="margin-bottom: 6rem; ">
+                  <h1 class="mt-4">Register Student</h1>
+                  <ol class="breadcrumb mb-4">
+                      <li class="breadcrumb-item active">Add student to database !</li>
+                  </ol>
+                </div>
+                <form method="post" action="/studentReg">
+                  <div class="mb-3">
+                    <label for="exampleInputstudent1" class="form-label"
+                      >Student Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="sname"
+                      id="exampleInputstudent1"
+                      required
+                    />
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="semail"
+                      id="exampleInputEmail1"
+                      required
+                    />
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="studentID" class="form-label">Student ID</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="sid"
+                      id="studentID"
+                      required
+                    />
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="studentROLL" class="form-label">Student Roll Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="sroll"
+                      id="studentROLL"
+                      required
+                    />
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="studentCLASS" class="form-label" >Student year</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="syear"
+                      id="studentCLASS"
+                      list="year"
+                      required
+                    />
+                    <datalist id="year">
+                        <option value="ty1">
+                        <option value="ty2">
+                        <option value="sy1 ">
+                        <option value="sy2">
+                     
+                    </datalist>
+
+                   
+
+
+
+
+
+                  </div>
+                  <div class="mb-3">
+                    <label for="studentBranch" class="form-label">Student Branch</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="sbranch"
+                      id="studentBranch"
+                      list="branch"
+                      required
+                    />
+                    <datalist id="branch">
+                      <option value="cse">
+                      </datalist>
+                  </div>
+            
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </section>
+            <section class="show">
+              <div class="card-body">
+                <div class="mask d-flex align-items-center h-100">
+                  <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col-12">
+                        <div class="card shadow-2-strong" style="background-color: #f5f7fa">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table table-borderless mb-0">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">RollNo.</th>
+                                    <th scope="col">Year</th>
+                                    <th scope="col">Branch</th>
+            
+                                    <th scope="col">Remove</th>
+                                  </tr>
+                                </thead>
+            
+                                <tbody>
+                                  <% newStudent.forEach(function(student){ %>
+            
+                                  <tr>
+                                    <td><%=student.sname %></td>
+                                    <td><%=student.semail %></td>
+                                    <td><%=student.sid %></td>
+                                    <td><%=student.sroll %></td>
+                                    <td><%=student.syear %></td>
+                                    <td><%=student.sbranch %></td>
+            
+                                    <td>
+                                      <form action="/delete" method="post">
+                                        <input
+                                          type="hidden"
+                                          value="<%=student._id%>"
+                                          name="idname"
+                                        />
+                                        <button
+                                          type="button"
+                                          onclick="this.form.submit()"
+                                          class="btn btn-danger btn-sm px-3"
+                                        >
+                                          <i>X</i>
+                                        </button>
+                                      </form>
+                                    </td>
+                                  </tr>
+            
+                                  <% }); %>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+  </main>

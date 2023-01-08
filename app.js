@@ -389,7 +389,7 @@ app.post("/sendo",(req,res)=>{
 
 
 
-app.listen(3000, () => {
-  console.log("server connected at 3000 port !");
+app.listen(5000, () => {
+  console.log("server connected at 5000 port !");
 });
 /////////////////////////////////////////////////////////////////////

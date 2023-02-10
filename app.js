@@ -2,7 +2,15 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 // const md5 = require("md5");
+const IP = require('ip');
+// const axios = require('axios');
 
+const wifi = require('node-wifi');
+const scanner = require('node-wifi-scanner');
+
+
+
+// ===============================
 
 
 
@@ -30,7 +38,18 @@ app.get("/login", (req, res) => {
 });
 app.get("/index", (req, res) => {
   res.render("index");
-});
+  scanner.scan((err, networks) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(networks);
+  });
+// ===================== IP =================
+const ipAddress = IP.address();
+    console.log( "MY IP "+ ipAddress)
+
+})
 app.get("/aftertake", (req, res) => {
   res.render("aftertake");
 });
@@ -97,7 +116,7 @@ app.post("/studentReg", (req, res) => {
     if (userExist) {
       return res.status(422).json({ error: "Email Already Exist " });
     }
-
+    
     const user = new Student({
       sname: req.body.sname,
       semail: req.body.semail,
@@ -105,6 +124,8 @@ app.post("/studentReg", (req, res) => {
       sroll: req.body.sroll,
       syear: req.body.syear,
       sbranch: req.body.sbranch,
+      smac: req.body.smac,
+
     });
     user
       .save()
@@ -144,7 +165,11 @@ app.get("/addstudent", (req, res) => {
 
 app.get("/tycse", async function (req, res) {
 
+  
+
   founditem1 = await Student.find({syear: "ty1"})
+ 
+
                       
 
   founditem2 = await Student.find({ $and: [{ syear: 'ty1' }, { stoday:0 }] });
@@ -386,7 +411,31 @@ app.post("/sendo",(req,res)=>{
     
   });
   
-
+  app.post("/hot" ,(req,res)=>{
+    arr = [];
+    scanner.scan((err, networks) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      mac = networks[0].mac;
+      Student.find({smac:mac}).then((userexist)=>{
+        console.log(userexist)
+        userexist.forEach((mac)=>{
+          macString  = mac._id.toString()
+          console.log(macString)
+          arr.push(macString);
+         
+          Student.findByIdAndUpdate(
+            { _id: arr },
+            { $inc: { spresent: 1 ,stoday:1} }
+          ).exec();
+        })
+      })
+    }) ; 
+    
+    res.redirect("tycse")
+  })
 
 
 app.listen(5000, () => {

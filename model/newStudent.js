@@ -45,6 +45,12 @@ const studentSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
     default:""
+  },
+  smac:{
+    type:String,
+    required:true,
+    unique:true,
+    default:""
   }
 
   // seq: { type: Number, default: 0 }
